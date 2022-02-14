@@ -4,6 +4,16 @@ const jwt = require("jsonwebtoken");
 const { registerValidtaion, loginValidtaion } = require("../models/validation");
 const bcrypt = require("bcryptjs");
 
+module.exports.getUser = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id).select("-password");
+    res.json(user);
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).send("Server error");
+  }
+};
+
 module.exports.addUser = async (req, res) => {
   //VALIDATE THE DATA BEFORE WE A USER
   const { error } = registerValidtaion(req.body);
