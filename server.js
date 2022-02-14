@@ -1,8 +1,7 @@
 const express = require("express");
+const cors = require("cors");
 const dotenv = require("dotenv");
 dotenv.config();
-
-const cors = require("cors");
 
 const connectDB = require("./config/db");
 
@@ -11,9 +10,10 @@ const app = express();
 //Connect DB
 connectDB();
 
-// Inint Middleware
+// Init Middleware
 app.use(express.json({ limit: "30mb", extended: true }));
 app.use(express.urlencoded({ limit: "30mb", extended: true }));
+app.use(cors());
 
 app.get("/", (req, res) => {
   res.send("API Running");
