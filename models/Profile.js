@@ -19,7 +19,6 @@ const ProfileSchema = new mongoose.Schema({
     lat: { type: Number, default: 32.109333 },
     lng: { type: Number, default: 34.855499 },
   },
-  trk: [{ lat: Number, lng: Number }],
   date: {
     type: Date,
     default: Date.now,
