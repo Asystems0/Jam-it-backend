@@ -5,6 +5,9 @@ const ProfileSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "user",
   },
+
+  gender: { type: String, enum: ["male", "female"], required: true },
+
   instruments: {
     type: Array,
     default: [],
@@ -22,12 +25,5 @@ const ProfileSchema = new mongoose.Schema({
     default: Date.now,
   },
 });
-
-function arrayLimit(val) {
-  console.log(value.length);
-  if (value.length > 10) {
-    throw new Error("Assigned person's size can't be greater than 10!");
-  }
-}
 
 module.exports = Profile = mongoose.model("profile", ProfileSchema);
